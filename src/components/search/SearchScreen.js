@@ -1,44 +1,40 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useForm } from '../../hooks/useForm'
 import { getHeroesByName } from '../../selectors/getHeroesByName';
 import HeroCard from '../hero/HeroCard';
-// import queryString from 'query-string'
+import queryString from 'query-string'
 import { useLocation, useNavigate } from 'react-router-dom';
+// import { heroes } from '../../data/heroes';
 
 
 const SearchScreen = () => {
 
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
 
-  
-//   const parsed = queryString.parse(location.search);
-// console.log(parsed);
-  // const query = queryString
-  // console.log(location)
-  // console.log(location.search)
+  const { q: query = ''} = queryString.parse(location.search)
 
-  const [searchText, handleInputChange, reset] = useForm({
-    hero: '',
+  const [searchText, handleInputChange] = useForm({
+    hero: query,
   }); 
 
   const { hero } = searchText
-
-  const heroesFound = getHeroesByName(hero);
+  const heroesFound = useMemo(()=> getHeroesByName(query), [query]);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    reset();
     navigate(`?q=${hero}`)
   }
 
   return (
     <div>
-        <h1>Encuentra tu héroe favorito...</h1>
+        <h1>Find your hero...</h1>
         <hr/>
         <div className='row'>
           <div className='col-5'>
             <h4>Buscar</h4>
+            <hr/>
+
             <form onSubmit={handleSearch} className='d-flex gap-2'>
               <input 
                 type='text'
@@ -60,12 +56,19 @@ const SearchScreen = () => {
           </div>
 
           <div className='col-7'>
-            {heroesFound.map(hero => (
-              <HeroCard 
-                key={hero.superhero}
-                {...hero}
-              />
-            ))}
+            <h4>Resultados</h4>
+            <hr/>
+            {query === '' ? <div className='alert alert-info animate__animated animate__fadeIn'>Busca tu heroe</div> : 
+              (heroesFound.length === 0 ? 
+                <div className='alert alert-danger animate__animated animate__fadeIn'>
+                  No hay resultados con el nombre '{query}'
+                </div> : heroesFound.map(hero => (
+                  <HeroCard
+                    key={hero.superhero}
+                    {...hero}
+                  />
+                )))}
+
           </div>
         </div>
     </div>
