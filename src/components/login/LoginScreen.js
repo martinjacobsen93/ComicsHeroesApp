@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../auth/AuthContext';
+import { types } from '../../types/types';
 
 const LoginScreen = () => {
 
   const navigate = useNavigate();
+  const { dispatch } = useContext(AuthContext)
 
   const handleLogin = () => {
+
+    const loginAction = {
+      type: types.login,
+      payload: {
+        name: 'Martin',
+        surname: 'Jacobsen',
+        email: 'mail@mail.com'
+      }
+    }
+
+    dispatch(loginAction);
+
     navigate("/", {
       replace: true
     });

@@ -4,8 +4,6 @@ import { getHeroesByName } from '../../selectors/getHeroesByName';
 import HeroCard from '../hero/HeroCard';
 import queryString from 'query-string'
 import { useLocation, useNavigate } from 'react-router-dom';
-// import { heroes } from '../../data/heroes';
-
 
 const SearchScreen = () => {
 
