@@ -14,13 +14,12 @@ export const Navbar = () => {
             type: types.logout,
         }
         dispatch(logoutAction)
-        
+
         navigate("/login", {
             replace: true
         })
 
     }
-
 
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark p-2">
@@ -29,7 +28,7 @@ export const Navbar = () => {
                 className="navbar-brand" 
                 to="/"
             >
-                Asociaciones
+                HeroesApp
             </Link>
 
             <div className="navbar-collapse">
@@ -37,7 +36,6 @@ export const Navbar = () => {
 
                     <NavLink 
                         activeclassname="active"
-                        // className=""
                         className={({isActive}) => ' nav-item nav-link ' + (isActive ? 'active' : '')}
                         to="/marvel"
                     >

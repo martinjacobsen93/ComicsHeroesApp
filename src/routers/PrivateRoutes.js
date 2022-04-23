@@ -1,14 +1,20 @@
-import React, { useContext } from 'react'
-import { Navigate } from 'react-router-dom'
+import React, { useContext, useEffect } from 'react'
+import { Navigate, useLocation } from 'react-router-dom'
 import { AuthContext } from '../auth/AuthContext'
-import DashboardRoutes from './DashboardRoutes'
 
 const PrivateRoutes = ({children}) => {
 
     const { user } = useContext(AuthContext)
+
+    const {pathname, search} = useLocation();
+
+    useEffect(()=> {
+        localStorage.setItem('lastPath', (pathname + search))
+    },[pathname, search])
+
   return (
     <>
-        {user.logged ? <DashboardRoutes/> : <Navigate to='/login'/>}
+        {user.logged ? children : <Navigate to='/login'/>}
     </>
   )
 }

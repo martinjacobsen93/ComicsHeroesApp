@@ -10,7 +10,7 @@ const HeroCard = ({id, superhero, publisher, alter_ego, first_appearance, charac
         <div className='card'>
             <div className='row no-gutters'>
                 <div className='col-4'>
-                    <img src={heroImg} alt={superhero} className='card-img'/>
+                    <img src={heroImg} alt={superhero} className='card-img my-1 mx-1'/>
                 </div>
                 <div className='col-8'>
                     <div className='card-body'>

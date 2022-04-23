@@ -3,12 +3,19 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import LoginScreen from '../components/login/LoginScreen'
 import DashboardRoutes from './DashboardRoutes'
 import PrivateRoutes from './PrivateRoutes'
+import PublicRoute from './PublicRoute'
 
 const AppRouter = () => {
   return (
         <Router>
             <Routes>
-                <Route path='/login' element={<LoginScreen/>}/>
+
+                <Route path='/login' element={
+                  <PublicRoute>
+                    <LoginScreen/>
+                  </PublicRoute>
+                }/>
+
 
                 <Route path='/*' element={
                   <PrivateRoutes>
@@ -16,7 +23,6 @@ const AppRouter = () => {
                   </PrivateRoutes>
                 } />
 
-                {/* <Route path='/*' element={<DashboardRoutes/>}/> */}
             </Routes>
         </Router>
   )

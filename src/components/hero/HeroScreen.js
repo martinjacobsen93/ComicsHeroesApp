@@ -5,12 +5,14 @@ import { getHeroById } from '../../selectors/getHeroById';
 const HeroScreen = () => {
 
   const navigate = useNavigate();
-  const {heroId} = useParams();
+  const { heroId } = useParams();
   const hero = useMemo(() => getHeroById(heroId), [heroId]);
   
   if (!hero) {
     return <Navigate to='/'/>
   }
+
+  console.log(hero)
   
   
   const {id, superhero, publisher, alter_ego, first_appearance, characters} = hero

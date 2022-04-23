@@ -8,6 +8,8 @@ const LoginScreen = () => {
   const navigate = useNavigate();
   const { dispatch } = useContext(AuthContext)
 
+  const lastPath = localStorage.getItem('lastPath');
+
   const handleLogin = () => {
 
     const loginAction = {
@@ -21,7 +23,7 @@ const LoginScreen = () => {
 
     dispatch(loginAction);
 
-    navigate("/", {
+    navigate(lastPath, {
       replace: true
     });
   }

@@ -11,6 +11,7 @@ const AuthProvider = ({children}) => {
     const [ user, dispatch ] = useReducer(authReducer, {}, init)
 
     useEffect(()=> {
+        // Por cada vez que se loguee o desloguee el usuario se guarda el state en localStorage.
         localStorage.setItem('user', JSON.stringify(user));
     }, [user])
 
