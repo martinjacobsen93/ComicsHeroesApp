@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const HeroCard = ({id, superhero, publisher, alter_ego, first_appearance, characters}) => {
+const HeroCard = ({id, superhero, alter_ego, first_appearance, characters}) => {
 
     const heroImg = `/assets/${id}.jpg`;
 

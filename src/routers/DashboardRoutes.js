@@ -17,7 +17,6 @@ const DashboardRoutes = () => {
               <Route path='/' element={<MarvelScreen/>}/>
               <Route path='marvel' element={<MarvelScreen/>}/>
               <Route path='dc' element={<DcScreen/>}/>
-              {/* <Route path='hero' element={<HeroScreen/>}/> */}
               <Route path='hero/:heroId' element={<HeroScreen/>}/>
               <Route path='search' element={<SearchScreen/>}/>
               <Route path='*' element={<Error404/>}/>

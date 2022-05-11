@@ -6,7 +6,7 @@ import { types } from '../../types/types';
 export const Navbar = () => {
 
     const navigate = useNavigate();
-    const { user, dispatch } = useContext(AuthContext)
+    const { dispatch } = useContext(AuthContext)
 
     const handleLogout = () => {
 
@@ -61,7 +61,7 @@ export const Navbar = () => {
 
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
                 <ul className="navbar-nav ml-auto">
-                    <span className='my-auto nav-item nav-link text-info'>Hola {user.name}!</span>
+                    <span className='my-auto nav-item nav-link text-info'>Bienvenido!</span>
                     <NavLink 
                         activeclassname="active"
                         className="nav-item nav-link"

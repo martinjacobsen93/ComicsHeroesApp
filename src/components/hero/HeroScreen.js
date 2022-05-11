@@ -47,7 +47,7 @@ const HeroScreen = () => {
         <p>{characters}</p>
 
         <button 
-          className='btn btn-outline-success'
+          className='btn btn-outline-primary'
           onClick={handleReturn}
         >Return
         </button>
